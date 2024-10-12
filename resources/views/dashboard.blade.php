@@ -6,7 +6,7 @@
     </x-slot>
 
     <x-container>
-        <x-form post :action="route('question.store')">
+        <x-form :action=" route('question.store') ">
             <x-textarea label="Question" name="question"/>
 
             <x-btn.primary>Save</x-btn.primary>
@@ -19,7 +19,7 @@
 
         <div class="dark:text-gray-300 uppercase font-bold mb-1">List of Questions</div>
         <div class="dark:text-gray-400 space-y-4">
-            @foreach ($questions as $item)
+            @foreach ( $questions as $item )
                 <x-question :question="$item" />
             @endforeach
         </div>
