@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Question;
-use Illuminate\View\View;
+use Illuminate\Contracts\View\View;
 
 class DashboardController extends Controller
 {
