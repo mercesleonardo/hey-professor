@@ -15,10 +15,9 @@ it('should be able to create a new question bigger then 255 characters', functio
     ]);
 
     // Assert
-    assertDatabaseHas('questions', [
-        'question' => str_repeat('*', 260) . '?',
-        'draft'    => true,
-    ]);
+    $request->assertRedirect();
+    assertDatabaseCount('questions', 1);
+    assertDatabaseHas('questions', ['question' => str_repeat('*', 260) . '?']);
 });
 
 it('should create as a draft all the time', function () {
@@ -32,9 +31,10 @@ it('should create as a draft all the time', function () {
     ]);
 
     // Assert
-    $request->assertRedirect(route('dashboard'));
-    assertDatabaseCount('questions', 1);
-    assertDatabaseHas('questions', ['question' => str_repeat('*', 260) . '?']);
+    assertDatabaseHas('questions', [
+        'question' => str_repeat('*', 260) . '?',
+        'draft'    => true,
+    ]);
 });
 
 it('should check if ends with question mark ?', function () {
