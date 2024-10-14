@@ -12,6 +12,10 @@ class Question extends Model
 
     protected $guarded = [];
 
+    protected $casts = [
+        'draft' => 'boolean',
+    ];
+
     /**
      * @return HasMany<Vote>
      */

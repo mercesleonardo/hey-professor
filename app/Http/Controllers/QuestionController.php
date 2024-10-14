@@ -14,7 +14,6 @@ class QuestionController extends Controller
             'question' => [
                 'required',
                 'min:10',
-                //                'ends_with:?',
                 function (string $attribute, mixed $value, Closure $fail) {
                     if ($value[strlen($value) - 1] !== '?') {
                         $fail('Are you sure that is a question? It is missing the question mark in the end.');
@@ -24,7 +23,10 @@ class QuestionController extends Controller
             ],
         ]);
 
-        Question::query()->create($attributes);
+        Question::query()->create([
+            'question' => request()->question,
+            'draft'    => true,
+        ]);
 
         return to_route('dashboard');
     }
