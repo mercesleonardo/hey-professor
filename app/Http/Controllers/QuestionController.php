@@ -40,6 +40,15 @@ class QuestionController extends Controller
         return back();
     }
 
+    public function edit(Question $question): View
+    {
+        Gate::authorize('update', $question);
+
+        return view('question.edit', [
+            'question' => $question,
+        ]);
+    }
+
     public function destroy(Question $question): RedirectResponse
     {
         Gate::authorize('destroy', $question);

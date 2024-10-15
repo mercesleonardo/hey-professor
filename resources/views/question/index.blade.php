@@ -71,7 +71,6 @@
                                     Deletar
                                 </button>
                             </x-form>
-                            // publicar
                         </x-table.td>
                     </x-table.tr>
                 @endforeach
