@@ -49,6 +49,8 @@ class QuestionController extends Controller
 
     public function update(Question $question): RedirectResponse
     {
+        Gate::authorize('update', $question);
+
         $question->question = request()->question;
         $question->save();
 
