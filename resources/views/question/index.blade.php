@@ -33,15 +33,19 @@
                             <x-table.td>
                                 <x-form :action=" route('question.destroy', $question)" delete>
                                     <button type="submit" class="hover:underline text-blue-500">
-                                        Deletar
+                                        Delete
                                     </button>
                                 </x-form>
 
                                 <x-form :action=" route('question.publish', $question)" put>
                                     <button type="submit" class="hover:underline text-blue-500">
-                                        Publicar
+                                        Publish
                                     </button>
                                 </x-form>
+
+                                <a href="{{ route('question.edit', $question) }}" class="hover:underline text-blue-500">
+                                    Edit
+                                </a>
                             </x-table.td>
                         </x-table.tr>
                     @endforeach
@@ -68,7 +72,7 @@
                         <x-table.td>
                             <x-form :action=" route('question.destroy', $question)" delete>
                                 <button type="submit" class="hover:underline text-blue-500">
-                                    Deletar
+                                    Delete
                                 </button>
                             </x-form>
                         </x-table.td>
