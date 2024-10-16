@@ -70,11 +70,20 @@ class QuestionController extends Controller
         return to_route('question.index');
     }
 
+    public function archive(Question $question): RedirectResponse
+    {
+        Gate::authorize('archive', $question);
+
+        $question->delete();
+
+        return back();
+    }
+
     public function destroy(Question $question): RedirectResponse
     {
         Gate::authorize('destroy', $question);
 
-        $question->delete();
+        $question->forceDelete();
 
         return back();
     }
