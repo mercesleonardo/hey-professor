@@ -12,6 +12,7 @@ class DashboardController extends Controller
     {
         return view('dashboard', [
             'questions' => Question::query()
+                ->where('draft', false)
                 ->when(request()->has('search'), function (Builder $query) {
                     $query->where('question', 'like', '%' . request()->search . '%');
                 })

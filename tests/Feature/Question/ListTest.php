@@ -15,7 +15,7 @@ it('should list all the questions', function () {
     $response = get(route('dashboard'));
 
     /** @var Question $q */
-    foreach ($questions as $q) {
+    foreach ($questions->where('draft', false) as $q) {
         $response->assertSee($q->question);
     }
 });
@@ -36,7 +36,7 @@ it('should order by like and unlike, most liked question should be at the top, m
 
     $user       = User::factory()->create();
     $secondUser = User::factory()->create();
-    Question::factory()->count(5)->create();
+    Question::factory()->count(5)->create(['draft' => false]);
 
     $mostLikedQuestion = Question::find(3);
     $user->like($mostLikedQuestion);
