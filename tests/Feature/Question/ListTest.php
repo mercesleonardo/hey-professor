@@ -15,7 +15,7 @@ it('should list all the questions', function () {
     $response = get(route('dashboard'));
 
     /** @var Question $q */
-    foreach ($questions->where('draft', false) as $q) {
+    foreach ($questions as $q) {
         $response->assertSee($q->question);
     }
 });
